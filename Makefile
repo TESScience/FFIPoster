@@ -6,4 +6,4 @@ all: tess-ffi.pdf
 	pdflatex $<
 
 clean:
-	rm -f *.pdf *.out *.aux *.log *.toc *.nav *.snm *.synctex.gz *.synctex.gz\(busy\)
+	rm -f *.pdf *.out *.aux *.log *.toc *.nav *.snm *.synctex.gz *.synctex.gz\(busy\) *.bcf *.run.xml
