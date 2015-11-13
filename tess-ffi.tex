@@ -30,7 +30,7 @@
             \begin{block}{Introduction}
             The goals of this research are two fold:
               \begin{itemize}
-              \item Create a \emph{high fidelity} simulation of the TESS Full Frame Images (FFI)
+              \item Create a \emph{fast, high fidelity} simulation of the TESS Full Frame Images (FFI)
               \item Develop data processing system that takes the TESS FFIs and looks for items such as:
               \begin{itemize}
               	\item Tidal disruption events
@@ -46,12 +46,13 @@
             \begin{block}{Conventional Data Processing Pipeline}
               \includegraphics[width=0.95\linewidth]{figures/Conventional_Pipeline.pdf}
             \end{block}
+	    Conventional processing for astronomical data attempts to scrub out artifacts and then extract results from clean images. Computational requirements are relatively low, but the scrubbing process may remove real effects and makes error estimates less accurate.
 
             \vspace{2cm}
-            \begin{block}{Our Data Processing Pipeline}
+            \begin{block}{Our Intended Simulation-driven Processing Loop}
               \includegraphics[width=0.95\linewidth]{figures/Our_Pipeline.pdf}
             \end{block}
-
+Running a model through a simulation to compare with the rawest data available is statistically more robust, in theory. To get good agreement, every significant effect, whether you consider it an intended data product or an `artifact', must be included in the model. This makes it harder to ignore the unexpected. Running multiple simulations is computationally expensive, but with the cost of Gflop/s cores at about \$0.20/core and falling rapidly, this is manageable.
           }
         \end{minipage}
       \end{beamercolorbox}
