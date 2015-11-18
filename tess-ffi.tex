@@ -5,7 +5,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym}
 \boldmath
-\usepackage[orientation=landscape,size=a0,scale=1.4,debug]{beamerposter}
+\usepackage[orientation=landscape,size=a0,scale=1.2,debug]{beamerposter}
 \usepackage{array,booktabs,tabularx}
 \newcolumntype{Z}{>{\centering\arraybackslash}X}
 \newcommand{\pphantom}{\textcolor{ta3aluminium}}
@@ -44,15 +44,20 @@
 
             \vspace{2cm}
             \begin{block}{Conventional Data Processing Pipeline}
+            \begin{itemize}
+              	\item Conventional processing for astronomical data attempts to scrub out artifacts and then extract results from clean images
+		\item Computational requirements are relatively low, but the scrubbing process may remove real effects and makes error estimates less accurate
+	    \end{itemize}
               \includegraphics[width=0.95\linewidth]{figures/Conventional_Pipeline.pdf}
             \end{block}
-	    Conventional processing for astronomical data attempts to scrub out artifacts and then extract results from clean images. Computational requirements are relatively low, but the scrubbing process may remove real effects and makes error estimates less accurate.
 
             \vspace{2cm}
-            \begin{block}{Our Intended Simulation-driven Processing Loop}
-              \includegraphics[width=0.95\linewidth]{figures/Our_Pipeline.pdf}
+            \begin{block}{Our Intended Simulation-Driven Processing Loop}
+            Running a model through a simulation to compare with the rawest data available is statistically more robust, in theory. In order get good agreement every significant effect must be included in the model, whether you consider it an intended data product or an `artifact'. This makes it harder to ignore unexpected events and phenomena. Running multiple simulations is computationally expensive, but with the cost of Gflop/s cores at  $\approx$\$0.20/core and falling rapidly, this is manageable.
+              \begin{center}
+              \includegraphics[width=0.75\linewidth]{figures/Our_Pipeline.pdf}
+              \end{center}
             \end{block}
-Running a model through a simulation to compare with the rawest data available is statistically more robust, in theory. To get good agreement, every significant effect, whether you consider it an intended data product or an `artifact', must be included in the model. This makes it harder to ignore the unexpected. Running multiple simulations is computationally expensive, but with the cost of Gflop/s cores at about \$0.20/core and falling rapidly, this is manageable.
           }
         \end{minipage}
       \end{beamercolorbox}
@@ -76,7 +81,7 @@ Running a model through a simulation to compare with the rawest data available i
                     \item We will simulate optics, CCD detector physics, and electronics.
                     \begin{itemize}
                     	\item Every photon from every star is independent, so we can rapidly generate an image using parallelization technologies like \texttt{CUDA} 
-			\item We can further accelerate the process by choosing a representive sample of photon paths and weighting. This can also yield a more accurate estimate of the expectation value than a straight Monte Carlo simulation.
+			\item We can further accelerate the process by choosing a representative sample of photon paths and weighting. This can also yield a more accurate estimate of the expectation value than a straight Monte Carlo simulation.
                     \end{itemize}
                     \vfill
                     \item We will also simulate the TESS on-board data processing, including the cosmic ray scrubbing to be applied to the FFIs.
@@ -92,8 +97,8 @@ Running a model through a simulation to compare with the rawest data available i
             \begin{block}{Evaluation}
             	\begin{itemize}
 			\item Series of images give rise to time series which can be mined looking for various objects and events
-			\item To evaluate the performance of a particular mining algorithm, downlink data is simulated 
-			\item Comparison of algorithms uses various statistical performance measurements:
+			\item To evaluate the performance of a particular data mining algorithm, downlink data is simulated 
+			\item Comparison of algorithms uses various statistical performance measurements, such as $F_1$ scores, \emph{Markedness}, \emph{Informedness}, Area under ROC Curve and others
 				\begin{columns}
                 			\begin{column}{.60\textwidth}
 			        $$ F_1 = \frac{A}{A + \frac{B + C}{2}} $$
@@ -106,9 +111,14 @@ Running a model through a simulation to compare with the rawest data available i
 		                         \includegraphics[width=0.65\linewidth]{figures/truth_table}
 	       		       \end{column}
 			       \end{columns}
-			       \begin{center}
-			       	\includegraphics[width=0.30\linewidth]{figures/ROC}
-			       \end{center}
+			       \begin{columns}
+			       \begin{column}{.60\textwidth}
+			       Hurst exponent explanation goes here
+			       \end{column}
+			       \begin{column}{.38\textwidth}
+			       	\includegraphics[width=0.65\linewidth]{figures/ROC}
+			       \end{column}
+			       \end{columns}
                 \end{itemize}
             \end{block}
           }
