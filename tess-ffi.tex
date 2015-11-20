@@ -2,6 +2,7 @@
 \usepackage{grffile}
 \mode<presentation>{\usetheme{I6pd2}}
 \usepackage[english]{babel}
+%\usepackage{natbib}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym}
 \boldmath
@@ -9,7 +10,6 @@
 \usepackage{array,booktabs,tabularx}
 \newcolumntype{Z}{>{\centering\arraybackslash}X}
 \newcommand{\pphantom}{\textcolor{ta3aluminium}}
-\usepackage{biblatex}
 
 \listfiles
  
@@ -100,7 +100,7 @@
 			\item To evaluate the performance of a particular data mining algorithm, downlink data is simulated 
 			\item Comparison of algorithms uses various statistical performance measurements, such as $F_1$ scores, \emph{Markedness}, \emph{Informedness}, Area under ROC Curve and others
 				\begin{columns}
-                			\begin{column}{.60\textwidth}
+                			\begin{column}{.30\textwidth}
 			        $$ F_1 = \frac{A}{A + \frac{B + C}{2}} $$
 			       
 			       $$ Markedness = \frac{A}{A + B} + \frac{C}{C+D}$$
@@ -113,13 +113,17 @@
 			       \end{columns}
 			       \begin{columns}
 			       \begin{column}{.60\textwidth}
-			       Hurst exponent explanation goes here
+			       Hurst exponent explanation goes here \cite{hurst_long-term_1951} 
 			       \end{column}
 			       \begin{column}{.38\textwidth}
 			       	\includegraphics[width=0.65\linewidth]{figures/ROC}
 			       \end{column}
 			       \end{columns}
                 \end{itemize}
+            \end{block}
+            \begin{block}{Bibliography}
+	   \bibliographystyle{plain}
+            \bibliography{./bibliography.bib}
             \end{block}
           }
 
@@ -130,7 +134,6 @@
     % end the column
   \end{columns}
   \vskip1ex
-  %\tiny\hfill\textcolor{ta2gray}{Created with \LaTeX \texttt{beamerposter}  \url{http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php}}
   \tiny\hfill{Created with \LaTeX \texttt{beamerposter}  \url{http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php} \hskip1em}
 \end{frame}
 \end{document}

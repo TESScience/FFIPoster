@@ -8,3 +8,5 @@
 *.toc
 *.bcf
 *.run.xml
+tess-ffi.bbl
+tess-ffi.blg
