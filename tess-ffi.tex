@@ -40,7 +40,7 @@
             \begin{columns}
 	            \begin{column}{.70\textwidth}
 		              \begin{itemize}
-		              \item Create a \emph{fast, high fidelity} simulation of the TESS Full Frame Images (FFI)
+		              \item Create a \emph{fast, high fidelity} simulation of the TESS Full Frame Images (FFIs)
 		              \item Develop a data processing system that takes the TESS FFIs and looks for items such as:
 		              \begin{itemize}
 		              	\item Tidal disruption events
@@ -60,9 +60,9 @@
             \vspace{2cm}
             \begin{block}{Conventional Data Processing Pipeline}
             \begin{itemize}
-              	\item Conventional processing for astronomical data attempts to scrub out artifacts and then extract results from clean images
-		\item Computational requirements are relatively low, but the scrubbing process may remove real effects and makes error estimates less accurate
-		\item In the past, this approach was necessary due to the high expense of computation
+              	\item Conventional processing for astronomical data attempts to scrub out artifacts and then extract results from clean images.
+		\item Computational requirements are relatively low, but the scrubbing process may remove real effects and makes error estimates less accurate.
+		\item In the past, this approach was necessary due to the high expense of computation.
 	    \end{itemize}
 	      \begin{center}
               \includegraphics[width=0.75\linewidth]{figures/Conventional_Pipeline.pdf}
@@ -72,10 +72,10 @@
             \vspace{2cm}
             \begin{block}{Our Simulation-Driven Processing Loop}
             \begin{itemize}
-            \item  In theory, running a model through a simulation to compare with the rawest data available is statistically more robust
-            \item In order get good agreement every significant effect must be included in the model including artifacts conventionally removed
-            \item By not discarding data, it is harder to ignore unexpected events and phenomena
-            \item Running multiple simulations is computationally expensive, but the cost of Gflop/s cores is $\approx\$0.20$ per core and falling rapidly
+            \item  In theory, running a model through a simulation to compare with the rawest data available is statistically more robust.
+            \item In order get good agreement, we must put every significant effect in the model including artifacts conventionally removed.
+            \item It will be harder to ignore unexpected events and phenomena.
+            \item Running multiple simulations is computationally expensive, but the cost of Gflop/s cores is $\approx\$0.20$ per core and falling rapidly.
             \end{itemize}
               \begin{center}
               \includegraphics[width=0.75\linewidth]{figures/Our_Pipeline.pdf}
@@ -90,7 +90,7 @@
 		\item Give URL of GitHub project here
 	    \end{itemize}
 	    \vspace{1cm}
-The authors acknowledge productive discussions with Garrett Jernigan, Roland Vanderspek, and George Ricker
+The authors acknowledge productive discussions with Garrett Jernigan, Roland Vanderspek, and George Ricker.
             \end{block}
           }
         \end{minipage}
@@ -112,13 +112,13 @@ The authors acknowledge productive discussions with Garrett Jernigan, Roland Van
                 \begin{itemize}
                     \item In our new proposed simulator, the \emph{Sky Model} will include catalog stars, galaxies, solar system bodies, diffuse galactic light, zodiacal light, ...
                     \vfill
-                    \item Optics, CCD detector physics, and electronics will be simulated
+                    \item We will simulate optics, CCD detector physics, and electronics.
                     \begin{itemize}
-                    	\item Every photon from every star is independent, so we can rapidly generate images using many processor cores in parallel. We will employ \texttt{CUDA}, (Compute Unified Device Architecture), and possibly other technologies, for this. 
-			\item The process can be further accelerated by choosing a representative sample of photon paths and weighting, yielding a more accurate estimate of the expectation value than a straight Monte Carlo simulation
+                    	\item Every photon from every star is independent, so we can rapidly generate images using many processor cores in parallel. We will employ \texttt{CUDA}, (Compute Unified Device Architecture), and possibly other technologies. 
+			\item We can accelerate these calculations by choosing a representative sample of photon paths and weighting, yielding a more accurate estimate of the expectation value than a straight Monte Carlo simulation.
                     \end{itemize}
                     \vfill
-                    \item TESS on-board data processing, including the cosmic ray scrubbing to be applied to the FFIs, will also be simulated
+                    \item We will also simulate TESS on-board data processing, including the cosmic ray scrubbing, since that is part of the raw image capture process.
                     \vfill
                 \end{itemize}
                 \end{column}
@@ -137,7 +137,7 @@ The authors acknowledge productive discussions with Garrett Jernigan, Roland Van
 					\item We intend to bring in statistical processing and evaluation methods from as many sources as practical (machine vision, economics, ...).
 					\item We will compare algorithms using various statistical performance measurements, such as $F_1$ scores, area under ROC Curve (see figure to the right) and others.
 					$$ F_1 = 2 \cdot \frac{\textup{precision} \cdot \textup{recall}}{\textup{precision} + \textup{recall}} $$
-					\item Interesting objects may be found by applying statistical methods from complex systems
+					\item We may be able to find interesting objects by applying statistical methods from complex systems theory. We expect that objects with unusual measures of variability will prove to be unusual physically.
 					\begin{itemize}
 						\item \emph{Hurst exponents} \cite{hurst_longterm_1951}
 						\begin{itemize}
@@ -156,14 +156,13 @@ The authors acknowledge productive discussions with Garrett Jernigan, Roland Van
 						\end{itemize}
 						\item \emph{Tail $\alpha$-value}
 						\begin{itemize}
-							\item Objects with little extreme variation, like the Gaussian, are dubbed \emph{thin tailed}
-							\item Objects with wild variation, like the object recently found by Boyajian et. al \cite{boyajian_planet_2015}, are dubbed \emph{fat tailed}
+							\item Objects with little extreme variation, like the Gaussian, are dubbed \emph{thin tailed}.
+							\item Objects with wild variation, like the object recently found by Boyajian et. al \cite{boyajian_planet_2015}, are dubbed \emph{fat tailed}.
 							\item There are an number of estimators we may use. One estimator due to Taleb \cite{taleb_silent_2015} employs the fact that for fat tailed distributions with a tail coefficient $\alpha > 2$, then
 							$$ \Xi[X] = \frac{\sqrt{\mathbb{E}[X^2]}}{\mathbb{E}[|X|]} = \frac{\sqrt{\pi}\sqrt{\frac{\alpha}{\alpha -2}}\Gamma\left(\frac{\alpha}{2}\right)}{\sqrt{\alpha} \Gamma \left(\frac{\alpha - 1}{2} \right)}$$
 							So $\alpha$ can be estimated by computing $\Xi^{-1}\left[\frac{\sqrt{\mathbb{E}[X^2]}}{\mathbb{E}[|X|]}\right]$
 						\end{itemize}
 					\end{itemize}
-					\item We expect that objects with unusual values for these variability measures will prove to be interesting.
 		                \end{itemize}
 	                \end{column}
 	                \begin{column}{.28\textwidth}
